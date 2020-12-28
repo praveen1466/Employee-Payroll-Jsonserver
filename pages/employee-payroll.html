@@ -20,16 +20,42 @@
         </div>
     </header>
 
-    <!-- Usecase 2 -->
+    
     <div class="form-content">
         <form action="#" class="form" onsubmit="save();return false">
             <div class="form-head">Employee Payroll form</div>
+            
+            <!-- Usecase 2 -->
             <div class="row-content">
                 <label for="name" class="label text">Name</label>
                 <input type="text" class="input" id="name" name="name" placeholder="Your name.." required>
             </div>
+
+            <!-- Usecase 3 -->
+            <div class="row-content">
+                <label for="profile" class="label text">Profile Image</label>
+                <div class="profile-radio-content">
+                    <label>
+                        <input type="radio" id="profile1" name="profile" value="../assets/profile1.jpg" required>
+                        <img src="../assets/profile1.jpg" id="image1" class="profile">
+                    </label>
+                    <label>
+                        <input type="radio" id="profile2" name="profile" value="../assets/profile2.jpg" required>
+                        <img src="../assets/profile2.jpg" id="image2" class="profile">
+                    </label>
+                    <label>
+                        <input type="radio" id="profile3" name="profile" value="../assets/profile3.jpg" required>
+                        <img src="../assets/profile3.jpg" id="image3" class="profile">
+                    </label>
+                    <label>
+                        <input type="radio" id="profile4" name="profile" value="../assets/profile4.jpg" required>
+                        <img src="../assets/profile4.jpg" id="image4" class="profile">
+                    </label>
+                </div>
+            </div>
         </form>
     </div>
+    
 
 </body>
 </html>
