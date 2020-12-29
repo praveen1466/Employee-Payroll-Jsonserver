@@ -208,6 +208,11 @@ select{
     .profile-radio-button{
         flex-flow: wrap;
     }
+
+    .profile-radio-content{
+        flex-wrap: wrap;
+    }
+    
     .submit-reset{
         width: 100%;
         display: flex;
@@ -222,5 +227,23 @@ select{
     .buttonParent{
         flex-direction: column-reverse;
         align-items: flex-start;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .profile-radio-content{
+        flex-wrap: wrap;
+    }
+    .input{
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width: 360px){
+    .profile-radio-content{
+        flex-wrap: wrap;
+    }
+    .input{
+        width: 35%;
     }
 }
