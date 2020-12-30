@@ -183,6 +183,7 @@ select{
     text-align: center;
 }
 
+
 /* Responsive design using media queries*/
 @media only screen and (max-width: 960px){
     .cancelButton{
