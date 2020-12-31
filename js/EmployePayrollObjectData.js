@@ -2,24 +2,24 @@ class EmployeePayRollData{
     //Properties
     id;
     name;
-    profil_pic;
+    profilePic;
     gender;
     department;
     salary;
     startDate;
-    notes;
+    note;
 
 
     //constructor
     constructor(...params) {
         this.id=params[0]
         this.name=params[1];
-        this.profil_pic=params[2];
+        this.profilePic=params[2];
         this.gender=params[3];
         this.department=params[4];
         this.salary=params[5];
         this.startDate=params[6];
-        this.notes=params[7];
+        this.note=params[7];
     } 
 
     //getter and setter method
@@ -65,11 +65,11 @@ class EmployeePayRollData{
         this._startDate=startDate;
     }
 
-    get notes(){
-        return this._notes;
+    get note(){
+        return this._note;
     }
-    set notes(notes){
-        this._notes=notes;
+    set note(note){
+        this._note=note;
     }
 
     toString() {
@@ -79,7 +79,7 @@ class EmployeePayRollData{
             this.startDate.toLocaleDateString("en-US",options);
         return "id=" + this.id + ", name='" + this.name + ", gender='" + this.gender +
             ", profilePic='" + this.profilePic + ", department=" + this.department +
-            ", salary=" + this.salary + ", startDate=" + empDate + ", notes=" + this.notes;
+            ", salary=" + this.salary + ", startDate=" + empDate + ", notes=" + this.note;
     }
 }
 

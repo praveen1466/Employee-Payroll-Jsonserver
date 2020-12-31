@@ -70,22 +70,22 @@
             <div class="row-content">
                 <label for="department" class="label text">Department</label>
                 <div>
-                    <input type="checkbox" class="checkbox" id="hr" name="hr" value="HR" required>
+                    <input type="checkbox" class="checkbox" id="hr" name="department" value="HR" required>
                     <label for="hr" class="text">HR</label>
-                    <input type="checkbox" class="checkbox" id="sales" name="sales" value="Sales" >
+                    <input type="checkbox" class="checkbox" id="sales" name="department" value="Sales" >
                     <label for="sales" class="text">Sales</label>
-                    <input type="checkbox" class="checkbox" id="finance" name="finance" value="Finance" >
+                    <input type="checkbox" class="checkbox" id="finance" name="department" value="Finance" >
                     <label for="finance" class="text">Finance</label>
-                    <input type="checkbox" class="checkbox" id="engineer" name="engineer" value="Engineer" >
+                    <input type="checkbox" class="checkbox" id="engineer" name="department" value="Engineer" >
                     <label for="engineer" class="text">Engineer</label>
-                    <input type="checkbox" class="checkbox" id="others" name="others" value="Others" >
+                    <input type="checkbox" class="checkbox" id="others" name="department" value="Others" >
                     <label for="others" class="text">Others</label>
                 </div>
                 <error-output class="dept-error" for="department"></error-output>
             </div>
             <div class="row-content">
                 <label for="salary" class="label text">Choose your salary: </label>
-                <input type="range" class="input" name="salary" id="salary" min="30000" max="50000" step="100" value="40000" required>
+                <input type="range" class="input" name="salary" id="salary" name="salary" min="30000" max="50000" step="100" value="40000" required>
                 <output class="salary-output text" for="salary">40000</output>
             </div>
 
@@ -153,9 +153,9 @@
 
             <!-- Usecase 6 -->
             <div class="row-content">
-                <label for="notes" class="label text">Notes</label>
-                <textarea class="input" name="Notes" id="notes" style="height: 100px;" required></textarea>
-                <error-output class="notes-error" for="notes"></error-output>
+                <label for="note" class="label text">Notes</label>
+                <textarea class="input" name="note" id="note" style="height: 100px;" required></textarea>
+                <error-output class="note-error" for="note"></error-output>
             </div>
 
             <!-- Usecase 7 -->
