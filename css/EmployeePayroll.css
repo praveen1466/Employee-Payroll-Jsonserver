@@ -1,214 +1,322 @@
-class EmployeePayRollData{
-    //Properties
-    id;
-    name;
-    profilePic;
-    gender;
-    department;
-    salary;
-    startDate;
-    note;
-
-
-    //constructor
-    constructor(...params) {
-        this.id=params[0]
-        this.name=params[1];
-        this.profilePic=params[2];
-        this.gender=params[3];
-        this.department=params[4];
-        this.salary=params[5];
-        this.startDate=params[6];
-        this.note=params[7];
-    } 
-
-    //getter and setter method
-    get id(){
-        return this._id;
-    }
-    set id(id){
-        this._id=id;
-    }
-
-    get name(){
-    return this._name;
-    }
-    set name(name){
-        let nameRegex = RegExp('^[A-Z]{1}[a-zA-Z\\s]{2,}$')
-        if(nameRegex.test(name))
-            this._name = name;
-        else throw 'Name is Incorrect'
-        this._name=name;
-    }
-    
-    get profilePic(){
-        return this._profilePic;
-    }
-    set profilePic(profilePic){
-        this._profilePic=profilePic;
-    }
-     
-    get gender(){
-        return this._gender;
-    }
-    set gender(gender){
-        this._gender=gender;
-    }
-
-    get department(){
-        return this._department;
-    }
-    set department(department){
-        this._department=department;
-    }
-
-    get salary(){
-        return this._salary;
-    }
-    set salary(salary){
-        this._salary=salary;
-    }
-
-    get note(){
-        return this._note;
-    }
-    set note(note){
-        this._note=note;
-    }
-
-    get startDate(){
-        return this._startDate;
-    }
-    set startDate(startDate){
-        this._startDate=startDate;
-    }
-    
-    toString() {
-
-        const options = { year: 'numeric', month: 'short', day: 'numeric' };
-        const empDate = !this.startDate ? "undefined" :
-            this.startDate.toLocaleDateString("en-US",options);
-        return "id=" + this.id + ", name='" + this.name + ", gender='" + this.gender +
-            ", profilePic='" + this.profilePic + ", department=" + this.department +
-            ", salary=" + this.salary + ", startDate=" + empDate + ", notes=" + this.note;
-    }
+body {
+    margin: 0;
+    height: 100%;
+  }
+  
+.header {
+    padding: 15px 0;
+    background-color: #ffffff;
+}
+  
+.header-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 0px solid green;
+}
+  
+header img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; 
 }
 
-
-
-window.addEventListener('DOMContentLoaded', (event) => {
-    const name = document.querySelector("#name")
-    const textError = document.querySelector('.text-error')
-    name.addEventListener('input', function() {
-        if (name.value.length == 0) {
-            textError.textContent = ""
-            return
-        }
-        try {
-            (new EmployeePayRoll).name = name.value
-            textError.textContent = ""
-        } catch (e) { textError.textContent = e }
-    });
-
-    //UC8: Adding event listener on salary range is added
-    const salary = document.querySelector('#salary');
-    const output = document.querySelector('.salary-output');
-    output.textContent = salary.value;
-    salary.addEventListener('input', function() {
-        output.textContent = salary.value
-    });
-})
-
-
-//UC14: saving the object to the local storage on submit
-const save = () => {
-    try {
-        let employeePayrollData = createEmployeePayroll();
-        createAndUpdateStorage(employeePayrollData);
-    } catch (e) {
-        return;
+  .logo-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 0px solid green;
+    width: 80%;
+  }
+  
+  .logo-content-img {
+    border: solid 0px #42515f;
+  }
+  
+  .emp-text {
+    font: normal normal bold 22px/25px Montserrat;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 0px;
+    color: #82a70c;
+    text-transform: capitalize;
+  }
+  
+  .emp-payroll {
+    color: #42515f;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* UC2: form is added*/
+  .form-content {
+    min-height: calc(100% - 80px);
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0px solid green;
+  }
+  
+  .form {
+    width: 65%;
+    padding: 44px 60px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid #f5f5f5;
+    border-radius: 8px;
+    opacity: 1;
+  }
+  
+  .form-head {
+    font: normal normal bold 24px/37px Roboto;
+    letter-spacing: 0px;
+    color: #42515f;
+    text-transform: capitalize;
+    opacity: 1;
+    padding-bottom: 20px;
+  }
+  
+  .row-content {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    align-items: center;
+    border: 0px solid green;
+  }
+  
+  .label {
+    min-width: 140px;
+  }
+  
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+  
+  .text {
+    font-size: 16px;
+    color: #42515f;
+    opacity: 1;
+    font-family: Roboto;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  /* UC3: profile radios*/
+  .profile-radio-content {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .profile-radio-content > label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .profile {
+    width: 40px;
+    border-radius: 50%;
+    margin-left: 12px;
+  }
+  
+  /* UC5: Start date*/
+  select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font: normal normal normal 16px Roboto;
+    letter-spacing: 0px;
+    color: #42515f;
+    background-color: tranparent;
+  }
+  
+  /* UC6: Notes and Buttons*/
+  .buttonParent {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .button {
+    font-size: 20px;
+    font-family: Roboto;
+    letter-spacing: 0px;
+    color: #42515f;
+    opacity: 1;
+    background: transparent;
+    border: none;
+    font-weight: 400;
+    min-width: 140px;
+    padding: 7px 7px;
+    border: 1px solid #707070;
+    cursor: pointer;
+  }
+  
+  .submitButton {
+    border: 1px solid #969696;
+    background: #e2e2e2 0% 0% no-repeat padding-box;
+    margin-right: 30px;
+    opacity: 1;
+    border-radius: 5px;
+  }
+  
+  .submitButton:hover {
+    background-color: #82a70c;
+    text-decoration: none;
+    color: #f5f5f5;
+  }
+  
+  .cancelButton {
+    border: 1px solid #969696;
+    background: #e2e2e2 0% 0% no-repeat padding-box;
+    margin-left: 140px;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    opacity: 1;
+  }
+  
+  .cancelButton:hover {
+    background-color: #707070;
+    text-decoration: none;
+    color: #f5f5f5;
+  }
+  
+  .resetButton {
+    background: #e2e2e2 0% 0% no-repeat padding-box;
+    border: 1px solid #969696;
+    border-radius: 5px;
+    opacity: 1;
+  }
+  .resetButton:hover {
+    background-color: #707070;
+    text-decoration: none;
+    color: #f5f5f5;
+  }
+  
+  @media only screen and (max-width: 960px) {
+    .cancelButton {
+      margin-left: 0px;
     }
-}
-
-const createEmployeePayroll = () => {
-    let employeePayrollData = new EmployeePayRollData();
-    try {
-        employeePayrollData.name = getInputValueById('#name');
-    } catch (e) {
-        setTextValue('.text-error', e);
-        throw e;
+    .form {
+      width: 85%;
+      padding: 44px 20px;
     }
-
-    employeePayrollData.id = getSelectedValues('[name =id]')
-    employeePayrollData.profilePic = getSelectedValues('[name=profile]').pop()
-    employeePayrollData.gender = getSelectedValues('[name=gender]').pop()
-    employeePayrollData.department = getSelectedValues('[name=department]')
-    employeePayrollData.salary = getInputValueById('#salary')
-    employeePayrollData.note = getInputValueById('#note')
-    employeePayrollData.date = getInputValueById('#day') + " " + getInputValueById('#month') + " " + getInputValueById('#year')
-
-    alert(employeePayrollData.toString())
-    return employeePayrollData
-}
-
-function createAndUpdateStorage(employeePayrollData){
-    let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
-
-    if(employeePayrollList != undefined){
-        employeePayrollList.push(employeePayrollData);
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .form {
+      margin-top: 10px;
     }
-    else{
-        employeePayrollList = [employeePayrollData]
+    .row {
+      flex-direction: column;
     }
+    .uploadButton {
+      justify-content: flex-start;
+    }
+    .profile-radio-button {
+      flex-flow: wrap;
+    }
+    .submit-reset {
+      width: 100%;
+      display: flex;
+      flex-grow: 1;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .submitButton {
+      margin: 0;
+    }
+    .buttonParent {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
+  }
+  
+  error-output {
+    margin-left: 10px;
+    font-size: 14px;
+    font-style: italic;
+    color: red;
+  }
 
-    alert(employeePayrollList.toString());
-    localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
+  /* Responsive design using media queries*/
+@media only screen and (max-width: 960px){
+  .cancelButton{
+      margin-left: 0px;
+  }
+
+  .form{
+      width: 85%;
+      padding: 44px 20px;
+  }
 }
 
-const getSelectedValues = (propertyValue) => {
-    let allItems = document.querySelectorAll(propertyValue);
-    let setItems = [];
-    allItems.forEach(item => {
-        if (item.checked)
-            setItems.push(item.value);
-    });
-    return setItems;
+@media only screen and (max-width: 600px){
+  .form{
+      margin-top: 10px;
+  }
+  .row{
+      flex-direction: column;
+  }
+  .uploadButton{
+      justify-content: flex-start;
+  }
+  .profile-radio-button{
+      flex-flow: wrap;
+  }
+
+  .profile-radio-content{
+      flex-wrap: wrap;
+  }
+  
+  .submit-reset{
+      width: 100%;
+      display: flex;
+      flex-grow: 1;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      margin-bottom: 20px;
+  }
+  .submitButton{
+      margin: 0;
+  }
+  .buttonParent{
+      flex-direction: column-reverse;
+      align-items: flex-start;
+  }
 }
 
-const getInputValueById = (id) => {
-    let value = document.querySelector(id).value;
-    return value;
+@media only screen and (max-width: 500px){
+  .profile-radio-content{
+      flex-wrap: wrap;
+  }
+  .input{
+      width: 45%;
+  }
 }
 
-const getInputElementValue = (id) => {
-    let value = document.querySelector(id).value;
-    return value;
-}
-
-//UC15: Resetting the form fields on reset
-const resetForm = () => {
-    setValue('#name', '');
-    unsetSelectedValues('[name=profile]');
-    unsetSelectedValues('[name=gender]');
-    unsetSelectedValues('[name=department]');
-    setValue('#salary', ' ');
-    setValue('#notes', ' ');
-    setValue('#day', '1');
-    setValue('#month', 'Jan');
-    setValue('#year', '2020');
-}
-
-const unsetSelectedValues = (propertyValue) => {
-    let allItems = document.querySelectorAll(propertyValue);
-    allItems.forEach(item => { item.checked = false; });
-}
-
-const setTextValue = (id, value) => {
-    const element = document.querySelector(id);
-    element.textContent = value;
-}
-
-const setValue = (id, value) => {
-    const element = document.querySelector(id);
-    element.value = value;
+@media only screen and (max-width: 360px){
+  .profile-radio-content{
+      flex-wrap: wrap;
+  }
+  .input{
+      width: 35%;
+  }
+  .form-head{
+      font: normal normal bold 18px/30px Roboto;
+  }
 }

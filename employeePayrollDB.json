@@ -1,0 +1,39 @@
+{
+    "EmployeeDB": [{
+            "_name": "Praveen Sakinala",
+            "_gender": "female",
+            "_department": [
+                "HR", "Engineer"
+            ],
+            "_salary": "400000",
+            "_startDate": "24 Dec 2019",
+            "_note": "thi is from HR and Engineer",
+            "_profilePic": "../assets/profile2.jpg",
+            "id": 3
+        },
+        {
+            "_name": "Raju Shiva",
+            "_gender": "female",
+            "_department": [
+                "HR", "Engineer"
+            ],
+            "_salary": "400000",
+            "_startDate": "24 Dec 2019",
+            "_note": "thi is from HR and Engineer",
+            "_profilePic": "../assets/profile2.jpg",
+            "id": 3
+        },
+        {
+            "_name": "Rani Kalyani",
+            "_gender": "female",
+            "_department": [
+                "HR", "Engineer"
+            ],
+            "_salary": "400000",
+            "_startDate": "24 Dec 2019",
+            "_note": "thi is from HR and Engineer",
+            "_profilePic": "../assets/profile1.jpg",
+            "id": 3
+        }
+    ]
+}
